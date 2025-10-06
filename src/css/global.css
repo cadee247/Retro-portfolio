@@ -1,7 +1,11 @@
 /* Global */
 body {
-  background-color: #0d0d0d;
-  color: #7a4ccf;
+  background-image: url('../assests/portfolio background.jpg'); /* your image path */
+  background-repeat: repeat;       /* repeat the image horizontally and vertically */
+  background-position: top left;   /* start tiling from top-left */
+  background-size: auto;           /* keep original size so it tiles */
+  background-attachment: fixed;    /* optional: keeps background fixed on scroll */
+  color: #7a4ccf;                  /* text color */
 }
 
 h1, h2, h3 {

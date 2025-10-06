@@ -6,7 +6,7 @@
     "node": "18.x"
   },
   "resolutions": {
-    "strip-ansi": "^6.0.1"
+    "strip-ansi": "6.0.1"
   },
   "dependencies": {
     "react": "^18.2.0",
