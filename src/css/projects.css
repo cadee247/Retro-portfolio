@@ -1,0 +1,287 @@
+/* ==============================
+   Project Section
+============================== */
+.project-section {
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #0d0d0d 80%, #3e1c75 100%);
+  color: #e0b3ff;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  border-top: 4px solid #3e1c75;
+  box-shadow: 0 0 40px #7a4ccf, 0 0 80px #ff00ff inset, 0 0 25px #1f1f1f inset;
+  position: relative;
+  overflow: hidden;
+  animation: crt-flicker 5s infinite;
+}
+
+/* CRT Scanlines overlay */
+.project-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.07) 0px,
+    rgba(255,255,255,0.07) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  animation: scan-move 8s linear infinite;
+  z-index: 5;
+}
+
+/* CRT shimmer overlay */
+.project-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 60%, #ff00ff33 100%);
+  opacity: 0.18;
+  pointer-events: none;
+  animation: shimmer-move 6s linear infinite;
+  z-index: 4;
+}
+
+@keyframes shimmer-move {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Heading glitch */
+.project-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  color: #c89ac9;
+  text-shadow: 3px 3px #000, 0 0 16px #ff00ff, 0 0 32px #7a4ccf;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  animation: text-glitch-skew 1s infinite linear alternate-reverse, heading-flicker 2.5s infinite alternate;
+}
+
+@keyframes heading-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.project-section h2::before,
+.project-section h2::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.project-section h2::before {
+  left: 2px;
+  text-shadow: -3px 0 #7a4ccf, 0 0 12px #ff00ff;
+  animation: glitch-slice-1 2s infinite linear alternate-reverse;
+}
+
+.project-section h2::after {
+  left: -2px;
+  text-shadow: -3px 0 #3e1c75, 0 0 12px #ff00ff;
+  animation: glitch-slice-2 3s infinite linear alternate-reverse;
+}
+
+/* Project cards grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+/* Project cards */
+.project-card {
+  background: repeating-linear-gradient(
+    135deg,
+    #1f1f1f 0px,
+    #1f1f1f 8px,
+    #3e1c75 9px,
+    #1f1f1f 10px
+  );
+  border: 3px solid #7a4ccf;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #7a4ccf, 0 0 8px #ff00ff inset;
+  transition: transform 0.25s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.25s cubic-bezier(.68,-0.55,.27,1.55), border-color 0.2s;
+  animation: fadeIn 0.8s ease-in, pixelPulse 2s infinite alternate;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pixel Pulse */
+@keyframes pixelPulse {
+  0% { border-color: #7a4ccf; box-shadow: 0 0 12px #7a4ccf, 0 0 8px #ff00ff inset; }
+  100% { border-color: #ff00ff; box-shadow: 0 0 24px #ff00ff, 0 0 16px #fff inset; }
+}
+
+/* Card hover effects */
+.project-card:hover,
+.project-card:focus {
+  transform: scale(1.08) rotate(-2deg) translateY(-6px);
+  box-shadow: 0 0 32px #ff00ff, 0 0 16px #fff inset;
+  border-color: #ff00ff;
+  animation: wiggleCard 0.5s cubic-bezier(.36,.07,.19,.97) both, pixelPulse 1s infinite alternate;
+}
+
+@keyframes wiggleCard {
+  0% { transform: scale(1.08) rotate(-2deg) translateY(-6px); }
+  25% { transform: scale(1.12) rotate(-6deg) translateY(-12px); }
+  50% { transform: scale(1.05) rotate(2deg) translateY(-2px); }
+  75% { transform: scale(1.10) rotate(-4deg) translateY(-8px); }
+  100% { transform: scale(1.08) rotate(-2deg) translateY(-6px); }
+}
+
+.project-card:hover::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  border: 2px dotted #ff00ff;
+  border-radius: 12px;
+  pointer-events: none;
+  animation: pixel-border 0.5s steps(6) forwards;
+}
+
+@keyframes pixel-border {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.project-card h4 {
+  font-size: 1rem;
+  color: #ffccff;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px #000, 0 0 8px #ff00ff;
+  letter-spacing: 1px;
+}
+
+.project-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #e0b3ff;
+  margin-bottom: 0.8rem;
+  text-shadow: 1px 1px #000;
+}
+
+/* Project links */
+.project-links {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.project-link,
+.github-link {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+  padding: 0.4em 1em;
+  border: 2px solid #7a4ccf;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #3e1c75 60%, #7a4ccf 100%);
+  color: #ffccff;
+  text-shadow: 0 0 8px #ff00ff, 0 0 4px #fff;
+  box-shadow: 0 0 12px #7a4ccf, 0 0 6px #ff00ff inset;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.project-link:hover,
+.github-link:hover,
+.project-link:focus,
+.github-link:focus {
+  background: linear-gradient(90deg, #ff00ff 40%, #7a4ccf 100%);
+  color: #fff;
+  box-shadow: 0 0 24px #ff00ff, 0 0 12px #fff inset;
+  transform: scale(1.08) rotate(-2deg);
+  border-color: #ff00ff;
+  text-shadow: 0 0 12px #fff, 0 0 24px #ff00ff;
+}
+
+.github-link {
+  background: linear-gradient(90deg, #24292e 60%, #7a4ccf 100%);
+  border-color: #ffccff;
+  color: #fff176;
+  text-shadow: 0 0 8px #fff176, 0 0 4px #ff00ff;
+}
+
+/* Project images */
+.project-image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.85);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.1) rotate(-1deg);
+  filter: brightness(1);
+}
+
+/* ==============================
+   MOBILE RESPONSIVE
+============================== */
+@media screen and (max-width: 480px) {
+  .project-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .project-card {
+    padding: 0.8rem;
+  }
+
+  .project-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .project-card p {
+    font-size: 0.75rem;
+  }
+
+  .project-links {
+    gap: 0.5rem;
+  }
+
+  .project-link,
+  .github-link {
+    font-size: 0.65rem;
+    padding: 0.3em 0.7em;
+  }
+
+  .project-image-wrapper {
+    height: 120px;
+  }
+
+  /* Hover effects fallback for touch devices */
+  .project-card:hover,
+  .project-card:focus {
+    transform: scale(1.03);
+    box-shadow: 0 0 24px #ff00ff, 0 0 12px #fff inset;
+  }
+}
