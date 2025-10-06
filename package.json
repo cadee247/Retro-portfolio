@@ -2,14 +2,18 @@
   "name": "gamey-portfolio",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^5.5.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+  "resolutions": {
+    "strip-ansi": "^6.0.1"
   },
+ "dependencies": {
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "react-icons": "^5.5.0",
+  "react-scripts": "5.0.1",
+  "web-vitals": "^2.1.4"
+},
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -32,6 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {}
+  }
 }
