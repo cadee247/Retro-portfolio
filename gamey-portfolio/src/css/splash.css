@@ -1,0 +1,433 @@
+/* ======================= Full Screen Overlay ======================= */
+.smash-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #1a0022, #0a0015);
+  font-family: 'Press Start 2P', monospace;
+  color: #ffccff;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* ======================= Insert Coin Screen ======================= */
+.coin-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* ======================= Coin Slot ======================= */
+.coin-slot {
+  position: relative;
+  width: 140px;
+  height: 80px;
+  margin-bottom: 2rem;
+  border: 2px dashed #fff;
+  border-radius: 8px;
+}
+
+.slot {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  background: #222;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #fff inset;
+}
+
+/* ======================= Coin ======================= */
+.coin {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffd700, #c99700);
+  border: 3px solid #fff176;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  transition: transform 0.2s ease;
+  z-index: 3;
+  touch-action: none;
+  user-select: none;
+}
+.coin:active {
+  cursor: grabbing;
+}
+.coin-welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.coin-welcome-container .coin {
+  position: static;
+  top: unset;
+  left: unset;
+  transform: none;
+  margin-bottom: 2.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.coin {
+  margin-bottom: 2.5rem;
+  /* keep other coin styles */
+}
+
+.welcome-text {
+  background: rgba(26, 0, 34, 0.85);
+  border: 2px dotted #9e7bdc;
+  border-radius: 10px;
+  padding: 1.5rem 2.5rem;
+  color: #cfaaff;
+  font-family: 'Press Start 2P', monospace;
+  box-shadow: 0 0 24px #7a4ccf, 0 0 8px #ff00ff inset;
+  text-align: left;
+  max-width: 400px;
+  margin-top: 0;
+  animation: fadeInUp 1s;
+}
+
+.welcome-text h2 {
+  color: #b48cff;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px #ff00ff, 0 0 16px #fff;
+}
+
+.welcome-text ul {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+.welcome-text li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #ffccff;
+  text-shadow: 0 0 4px #7a4ccf;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+@keyframes coinBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.1); }
+}
+
+/* ======================= Insert Coin Text ======================= */
+.insert-coin-text {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #fff;
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from { opacity: 1; }
+  to   { opacity: 0.2; }
+}
+
+/* ======================= HUD ======================= */
+.hud {
+  position: fixed;
+  top: 10px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #9e7bdc;
+  text-shadow: 0 0 6px #7a4ccf, 0 0 12px #ff00ff;
+  z-index: 10000;
+}
+
+.hud.timer-warning {
+  color: #ff0000;
+  animation: blink 0.5s infinite alternate;
+}
+
+/* ======================= XP Loader ======================= */
+.xp-loader {
+  position: fixed;
+  top: 40px;
+  left: 5%;
+  right: 5%;
+  height: 12px;
+  border: 2px solid #fff;
+  background: #1a0015;
+  box-shadow: 0 0 8px #7a4ccf;
+}
+
+.xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7a4ccf, #ff00ff);
+  box-shadow: 0 0 10px #ff00ff;
+  transition: width 0.3s ease;
+}
+
+/* ======================= Blocks Container ======================= */
+.block-container {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 100px);
+}
+
+/* ======================= Normal Block ======================= */
+.block {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(145deg, #7a4ccf, #5e2ca5);
+  border: 2px solid #fff;
+  box-shadow: 0 0 20px #9e7bdc, inset 0 0 10px #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.block:hover {
+  transform: scale(1.1) rotate(3deg);
+}
+
+/* ======================= Broken Block Explosion ======================= */
+.block.broken {
+  animation: blockExplode 0.7s forwards;
+  position: relative;
+}
+
+.block.broken::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255,0,255,0.6), transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: shockwave 0.5s forwards;
+  z-index: 1;
+}
+
+@keyframes blockExplode {
+  0%   { transform: scale(1) rotate(0deg); opacity: 1; box-shadow: 0 0 20px #ff00ff; }
+  20%  { transform: scale(1.5) rotate(20deg); box-shadow: 0 0 60px #ff00ff, 0 0 80px #ffcc00; }
+  50%  { transform: scale(1.2) rotate(-25deg); box-shadow: 0 0 50px #ff00ff, 0 0 100px #ffcc00; }
+  80%  { transform: scale(0.6) rotate(60deg); opacity: 0.5; box-shadow: 0 0 30px #ff00ff, 0 0 60px #ffcc00; }
+  100% { transform: scale(0) rotate(90deg); opacity: 0; box-shadow: 0 0 0 #ff00ff; }
+}
+
+@keyframes shockwave {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
+  50%  { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+/* ======================= Fragments ======================= */
+.fragment {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(145deg, #7a4ccf, #5e2ca5);
+  border: 1px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 12px #ff00ff;
+  opacity: 1;
+  z-index: 1;
+}
+
+.fragment1 { animation: fly1 0.8s forwards; }
+.fragment2 { animation: fly2 0.8s forwards; }
+.fragment3 { animation: fly3 0.8s forwards; }
+.fragment4 { animation: fly4 0.8s forwards; }
+
+@keyframes fly1 { to { transform: translate(-200px,-200px) rotate(-120deg) scale(0); opacity:0; } }
+@keyframes fly2 { to { transform: translate(200px,-200px) rotate(120deg) scale(0); opacity:0; } }
+@keyframes fly3 { to { transform: translate(-200px,200px) rotate(90deg) scale(0); opacity:0; } }
+@keyframes fly4 { to { transform: translate(200px,200px) rotate(-90deg) scale(0); opacity:0; } }
+
+/* ======================= Winner Popup ======================= */
+.winner-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  padding: 2rem 4rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.85);
+  border: 5px solid #ff00ff;
+  border-radius: 12px;
+  text-shadow: 0 0 20px #ff00ff, 0 0 40px #ffcc00;
+  box-shadow: 0 0 60px #ff00ff, inset 0 0 30px #7a4ccf;
+  animation: popupFlash 1s infinite alternate;
+  z-index: 10001;
+}
+
+@keyframes popupFlash {
+  from { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  to   { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
+/* ======================= Trick Blocks ======================= */
+.block.trick-block {
+  background: linear-gradient(145deg, #ff00ff, #ff55ff);
+  border: 2px dashed #ff00ff;
+  box-shadow: 0 0 25px #ff00ff, inset 0 0 15px #ff55ff;
+  animation: pulseTrick 1s infinite alternate;
+  transition: all 0.2s ease;
+}
+
+/* Progressive hits for trick blocks */
+.block.trick-block.hit1 {
+  background: linear-gradient(145deg, #ff66ff, #ff99ff);
+  box-shadow: 0 0 30px #ff66ff, inset 0 0 18px #ff99ff;
+}
+.block.trick-block.hit2 {
+  background: linear-gradient(145deg, #ff99ff, #ffccff);
+  box-shadow: 0 0 35px #ff99ff, inset 0 0 20px #ffccff;
+}
+.block.trick-block.hit3 {
+  background: linear-gradient(145deg, #ffccff, #ffffff);
+  box-shadow: 0 0 40px #ffccff, inset 0 0 25px #ffffff;
+}
+
+/* Pulse & shake on hit */
+.block.trick-block.hit {
+  animation: shakeHit 0.2s;
+}
+
+@keyframes shakeHit {
+  0% { transform: translate(0,0) rotate(0deg); }
+  25% { transform: translate(-5px, 3px) rotate(-3deg); }
+  50% { transform: translate(5px,-3px) rotate(3deg); }
+  75% { transform: translate(-3px,2px) rotate(-2deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+
+@keyframes pulseTrick {
+  from { transform: scale(1); }
+  to { transform: scale(1.15) rotate(3deg); }
+}
+
+/* ====== MOBILE RESPONSIVE ====== */
+@media screen and (max-width: 480px) {
+  /* Overlay padding & font size */
+  .smash-overlay {
+    font-size: 0.8rem;
+  }
+
+  /* Coin slot smaller */
+  .coin-slot {
+    width: 100px;
+    height: 60px;
+  }
+
+  .slot {
+    height: 16px;
+  }
+
+  /* Coin smaller */
+  .coin {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #fff176;
+  }
+
+  .coin-welcome-container .coin {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Insert Coin text */
+  .insert-coin-text {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  /* HUD font size */
+  .hud {
+    font-size: 0.7rem;
+    top: 5px;
+    left: 2%;
+    right: 2%;
+  }
+
+  /* XP loader smaller */
+  .xp-loader {
+    top: 30px;
+    height: 8px;
+  }
+
+  /* Blocks smaller */
+  .block-container {
+    top: 50px;
+    height: calc(100% - 80px);
+  }
+
+  .block {
+    width: 50px;
+    height: 50px;
+  }
+
+  .fragment {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* Winner popup */
+  .winner-popup {
+    font-size: 2rem;
+    padding: 1.5rem 2rem;
+  }
+
+  /* Trick blocks */
+  .block.trick-block {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ====== Tablet Responsive ====== */
+@media screen and (max-width: 768px) {
+  .coin-slot {
+    width: 120px;
+    height: 70px;
+  }
+
+  .coin {
+    width: 50px;
+    height: 50px;
+  }
+
+  .insert-coin-text {
+    font-size: 1.1rem;
+  }
+
+  .block {
+    width: 60px;
+    height: 60px;
+  }
+
+  .fragment {
+    width: 30px;
+    height: 30px;
+  }
+
+  .winner-popup {
+    font-size: 2.5rem;
+    padding: 1.8rem 3rem;
+  }
+}
