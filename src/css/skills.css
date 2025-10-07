@@ -1,90 +1,24 @@
 .skills-section {
   padding: 3rem 2rem;
-  background: #0d0d0d;
-  color: #e0b3ff;
-  border-top: 4px solid #5e2ca5;
+  background: transparent;
+  color: #ccc;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
+  font-family: 'Press Start 2P', monospace;
   position: relative;
   overflow: hidden;
-  font-family: 'Press Start 2P', monospace;
-  box-shadow: 0 0 40px #7a4ccf, 0 0 80px #ff00ff inset, 0 0 25px #1f1f1f inset;
-  animation: crt-flicker 5s infinite;
 }
 
-/* CRT Scanlines overlay */
-.skills-section::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.07) 0px,
-    rgba(255,255,255,0.07) 2px,
-    transparent 2px,
-    transparent 4px
-  );
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  animation: scan-move 8s linear infinite;
-  z-index: 5;
-}
-
-/* CRT shimmer overlay */
-.skills-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 60%, #ff00ff33 100%);
-  opacity: 0.18;
-  pointer-events: none;
-  animation: shimmer-move 6s linear infinite;
-  z-index: 4;
-}
-
-@keyframes shimmer-move {
-  0% { background-position: -100% 0; }
-  100% { background-position: 100% 0; }
-}
-
+/* Heading */
 .skills-heading {
   font-size: 2rem;
-  color: #ffccff;
-  text-shadow: 2px 2px #000, 0 0 16px #ff00ff, 0 0 32px #7a4ccf;
+  color: #ccc;
   margin-bottom: 2rem;
   letter-spacing: 2px;
-  position: relative;
-  display: inline-block;
-  animation: text-glitch-skew 1s infinite linear alternate-reverse, heading-flicker 2.5s infinite alternate;
+  text-shadow: none;
 }
 
-@keyframes heading-flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-.skills-heading::before,
-.skills-heading::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  overflow: hidden;
-  clip: rect(0, 900px, 0, 0);
-}
-
-.skills-heading::before {
-  left: 2px;
-  text-shadow: -3px 0 #7a4ccf, 0 0 12px #ff00ff;
-  animation: glitch-slice-1 2s infinite linear alternate-reverse;
-}
-
-.skills-heading::after {
-  left: -2px;
-  text-shadow: -3px 0 #3e1c75, 0 0 12px #ff00ff;
-  animation: glitch-slice-2 3s infinite linear alternate-reverse;
-}
-
+/* Skills grid */
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
@@ -92,18 +26,12 @@
   gap: 2rem;
 }
 
-/* Skill Cards */
+/* Skill card */
 .skill-card {
   width: 100px;
   height: 110px;
-  background: repeating-linear-gradient(
-    135deg,
-    #1f1f1f 0px,
-    #1f1f1f 8px,
-    #3e1c75 9px,
-    #1f1f1f 10px
-  );
-  border: 3px solid #ff00ff;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 0.6rem;
   display: flex;
@@ -113,160 +41,46 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  animation: floatIn 0.7s cubic-bezier(.68,-0.55,.27,1.55) forwards, pixelPulse 2s infinite alternate;
   opacity: 0;
   transform: translateY(30px);
-  box-shadow: 0 0 12px #7a4ccf, 0 0 8px #ff00ff inset;
-  transition: 
-    transform 0.25s cubic-bezier(.68,-0.55,.27,1.55), 
-    box-shadow 0.25s cubic-bezier(.68,-0.55,.27,1.55), 
-    border-color 0.2s;
+  animation: floatIn 0.7s ease forwards;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
-@keyframes pixelPulse {
-  0% { border-color: #ff00ff; box-shadow: 0 0 12px #7a4ccf, 0 0 8px #ff00ff inset; }
-  100% { border-color: #ffccff; box-shadow: 0 0 24px #ff00ff, 0 0 16px #fff inset; }
-}
-
-.skill-card:nth-child(1) { animation-delay: 0.2s; }
-.skill-card:nth-child(2) { animation-delay: 0.4s; }
-.skill-card:nth-child(3) { animation-delay: 0.6s; }
-.skill-card:nth-child(4) { animation-delay: 0.8s; }
-.skill-card:nth-child(5) { animation-delay: 1s; }
 
 .skill-card:hover,
 .skill-card:focus {
-  transform: scale(1.14) rotate(-4deg) translateY(-10px);
-  box-shadow: 0 0 24px #7a4ccf, 0 0 12px #ffccff inset;
-  border-color: #ffccff;
-  /* Removed animation property */
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
 }
 
-.skill-card:hover::after,
-.skill-card:focus::after {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; right: 0; bottom: 0;
-  border: 2px dotted #ffccff;
-  border-radius: 12px;
-  pointer-events: none;
-  animation: pixel-border 0.5s steps(6) forwards;
-}
-
-.skill-card:hover img,
-.skill-card:focus img {
-  filter: drop-shadow(0 0 12px #ffccff);
-  animation: idleBounce 0.6s cubic-bezier(.68,-0.55,.27,1.55) 1;
-}
-
-.skill-card:hover .skill-label,
-.skill-card:focus .skill-label {
-  color: #ffccff;
-  text-shadow: 1px 1px #000, 0 0 16px #ffccff;
-  animation: labelFlash 0.6s;
-}
-
-@keyframes pixel-border {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
+/* Skill icon */
 .skill-card img {
   width: 42px;
   height: 42px;
   margin-bottom: 0.5rem;
-  animation: idleBounce 1.8s cubic-bezier(.68,-0.55,.27,1.55) infinite, crtFlicker 2.5s infinite alternate;
-  filter: drop-shadow(0 0 8px #ff00ff);
 }
 
-.skill-card:nth-child(odd) img {
-  animation: idleTilt 2.5s cubic-bezier(.68,-0.55,.27,1.55) infinite, crtFlicker 2.5s infinite alternate;
-}
-
-@keyframes crtFlicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
+/* Skill label */
 .skill-label {
   font-size: 0.8rem;
-  color: #ffccff;
-  text-shadow: 1px 1px #000, 0 0 8px #ff00ff;
-  animation: labelFlash 1.2s infinite alternate;
+  color: #ccc;
   letter-spacing: 1px;
 }
 
-@keyframes labelFlash {
-  0% { color: #ffccff; text-shadow: 1px 1px #000, 0 0 8px #ff00ff; }
-  100% { color: #e0b3ff; text-shadow: 1px 1px #000, 0 0 16px #ff00ff; }
-}
-
-/* Animations */
+/* Float-in animation */
 @keyframes floatIn {
-  to { transform: translateY(0); opacity: 1; }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-@keyframes idleBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes idleTilt {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(6deg); }
-}
-
-/* Reused CRT animations for glitchy neon feel */
-@keyframes crt-flicker {
-  0%,100% { opacity: 1; }
-  10% { opacity: 0.85; }
-  20% { opacity: 0.95; }
-  30% { opacity: 0.75; }
-  40% { opacity: 0.9; }
-  50% { opacity: 0.8; }
-  60% { opacity: 0.92; }
-  70% { opacity: 0.7; }
-  80% { opacity: 0.95; }
-  90% { opacity: 0.88; }
-}
-
-@keyframes scan-move {
-  from { background-position: 0 0; }
-  to { background-position: 0 100%; }
-}
-
-@keyframes text-glitch-skew {
-  0% { transform: skew(0deg); }
-  20% { transform: skew(10deg); }
-  40% { transform: skew(-10deg); }
-  60% { transform: skew(15deg); }
-  80% { transform: skew(-15deg); }
-  100% { transform: skew(0deg); }
-}
-
-@keyframes glitch-slice-1 {
-  0% { clip: rect(20px, 9999px, 40px, 0); }
-  20% { clip: rect(60px, 9999px, 80px, 0); }
-  40% { clip: rect(10px, 9999px, 30px, 0); }
-  60% { clip: rect(70px, 9999px, 100px, 0); }
-  80% { clip: rect(40px, 9999px, 60px, 0); }
-  100% { clip: rect(0, 9999px, 120px, 0); }
-}
-
-@keyframes glitch-slice-2 {
-  0% { clip: rect(80px, 9999px, 100px, 0); }
-  20% { clip: rect(30px, 9999px, 60px, 0); }
-  40% { clip: rect(50px, 9999px, 90px, 0); }
-  60% { clip: rect(5px, 9999px, 25px, 0); }
-  80% { clip: rect(70px, 9999px, 110px, 0); }
-  100% { clip: rect(20px, 9999px, 50px, 0); }
-}
+/* Memory game section */
 .memory-game-section {
   margin: 2rem 0;
   text-align: center;
   font-family: 'Press Start 2P', monospace;
-  color: #ffccff;
+  color: #ccc;
 }
 
 .memory-grid {
@@ -292,7 +106,7 @@
 }
 
 .memory-card.flipped .memory-card-inner {
-  transform: rotateY(180deg) rotateZ(1deg);
+  transform: rotateY(180deg);
 }
 
 .memory-card-front,
@@ -304,12 +118,12 @@
   bottom: 0;
   backface-visibility: hidden;
   border-radius: 8px;
-  box-shadow: 0 0 12px #7a4ccf, 0 0 6px #ff00ff inset;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 .memory-card-front {
-  background: #1f1f1f;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .memory-card-back {
@@ -317,7 +131,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #3e1c75, #7a4ccf);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .memory-card-back img {
@@ -328,63 +142,51 @@
 }
 
 .memory-card.matched .memory-card-back img {
-  transform: scale(1.2) rotate(5deg);
-  filter: drop-shadow(0 0 12px #ff00ff);
-  animation: pulse 0.8s infinite alternate;
+  transform: scale(1.2);
 }
 
-@keyframes pulse {
-  from { transform: scale(1.2) rotate(5deg); }
-  to { transform: scale(1.3) rotate(-5deg); }
-}
-
-.memory-card-front:hover {
-  box-shadow: 0 0 20px #ff00ff, 0 0 12px #7a4ccf inset;
-}
-
+/* Restart button */
 .restart-button {
   font-family: 'Press Start 2P', monospace;
   font-size: 0.7rem;
   padding: 0.5em 1em;
-  border: 2px solid #7a4ccf;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  background: linear-gradient(90deg, #3e1c75 60%, #7a4ccf 100%);
-  color: #ffccff;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
   cursor: pointer;
   margin-bottom: 1rem;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .restart-button:hover {
-  background: linear-gradient(90deg, #ff00ff 40%, #7a4ccf 100%);
-  box-shadow: 0 0 20px #ff00ff, 0 0 12px #fff inset;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.05);
 }
 
+/* Win text */
 .win-text {
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: #fff176;
-  text-shadow: 0 0 12px #ff00ff;
+  color: #ccc;
 }
-/* ====== MOBILE RESPONSIVE ====== */
-@media screen and (max-width: 480px) {
 
-  /* Section padding */
+/* Responsive styles */
+@media screen and (max-width: 480px) {
   .skills-section {
     padding: 2rem 1rem;
   }
 
-  /* Heading size */
   .skills-heading {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
-  /* Skills grid */
   .skills-grid {
     gap: 1rem;
   }
 
-  /* Skill cards smaller and responsive */
   .skill-card {
     width: 80px;
     height: 90px;
@@ -400,14 +202,6 @@
     font-size: 0.7rem;
   }
 
-  /* Hover fallback for touch devices */
-  .skill-card:hover,
-  .skill-card:focus {
-    transform: scale(1.05);
-    box-shadow: 0 0 16px #7a4ccf, 0 0 8px #ffccff inset;
-  }
-
-  /* Memory game adjustments */
   .memory-grid {
     gap: 6px;
     max-width: 100%;
@@ -429,7 +223,6 @@
   }
 }
 
-/* Tablet sizes */
 @media screen and (max-width: 768px) {
   .skills-heading {
     font-size: 1.7rem;
