@@ -1,4 +1,36 @@
-/* Image wrapper ensures images stay inside card */
+.demo-section {
+  padding: 4rem 2rem;
+  background: transparent;
+  color: #ccc;
+  font-family: 'Press Start 2P', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid layout */
+.demo-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  position: relative;
+  z-index: 2;
+}
+
+/* Demo card */
+.demo-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(10px);
+  opacity: 0;
+  animation: floatIn 0.6s ease forwards;
+}
+
+/* Image wrapper */
 .demo-image-wrapper {
   width: 100%;
   height: 200px;
@@ -10,55 +42,15 @@
 .demo-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ensures the image fills the card without distortion */
+  object-fit: cover;
   display: block;
   transition: transform 0.5s ease, filter 0.5s ease;
   filter: brightness(0.85);
 }
 
 .demo-card:hover .demo-image {
-  transform: scale(1.1) rotate(-1deg);
+  transform: scale(1.05);
   filter: brightness(1);
-}
-
-/* Keep your existing CRT & glitch animations */
-.demo-section {
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #0d0d0d 80%, #3e1c75 100%);
-  color: #c89ac9;
-  font-family: 'Press Start 2P', monospace;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 40px #7a4ccf, 0 0 80px #ff00ff inset, 0 0 25px #1f1f1f inset;
-  animation: crt-flicker 5s infinite;
-}
-
-.demo-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  position: relative;
-  z-index: 2;
-}
-
-.demo-card {
-  background: repeating-linear-gradient(
-    135deg,
-    #1f1f1f 0px,
-    #1f1f1f 8px,
-    #3e1c75 9px,
-    #1f1f1f 10px
-  );
-  border: 3px solid #7a4ccf;
-  border-radius: 12px;
-  text-align: center;
-  transition: transform 0.25s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.25s cubic-bezier(.68,-0.55,.27,1.55), border-color 0.2s;
-  position: relative;
-  overflow: hidden;
-  transform: translateY(10px);
-  opacity: 0;
-  animation: floatIn 0.6s ease forwards, pixelPulse 2s infinite alternate;
-  box-shadow: 0 0 12px #7a4ccf, 0 0 8px #ff00ff inset;
 }
 
 /* Info overlay */
@@ -71,79 +63,44 @@
 .demo-info h3 {
   font-size: 1.4rem;
   margin: 0.5rem 0;
-  color: #ffccff;
-  text-shadow: 1px 1px #000, 0 0 8px #ff00ff;
+  color: #ccc;
   letter-spacing: 1px;
+  text-shadow: none;
 }
 
 .demo-info p {
   font-size: 1rem;
-  color: #d6b4fc;
+  color: #aaa;
   font-style: italic;
-  text-shadow: 1px 1px #000;
+  text-shadow: none;
 }
 
+/* Link button */
 .demo-link {
   display: inline-block;
   font-family: 'Press Start 2P', monospace;
   font-size: 0.8rem;
   padding: 0.5em 1.2em;
-  border: 2px solid #7a4ccf;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  background: linear-gradient(90deg, #3e1c75 60%, #7a4ccf 100%);
-  color: #ffccff;
-  text-shadow: 0 0 8px #ff00ff, 0 0 4px #fff;
-  box-shadow: 0 0 12px #7a4ccf, 0 0 6px #ff00ff inset;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
   text-decoration: none;
   font-weight: bold;
   letter-spacing: 1px;
-  transition: all 0.2s ease;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
 .demo-link:hover {
-  background: linear-gradient(90deg, #ff00ff 40%, #7a4ccf 100%);
-  transform: scale(1.08) rotate(-2deg);
-  box-shadow: 0 0 24px #ff00ff, 0 0 12px #fff inset;
-}
-/* ===== Mobile responsive styles for Demo Section ===== */
-@media screen and (max-width: 768px) {
-  .demo-section {
-    padding: 3rem 1rem;
-  }
-
-  .demo-info h3 {
-    font-size: 1.2rem;
-  }
-
-  .demo-info p {
-    font-size: 0.9rem;
-  }
-
-  .demo-link {
-    font-size: 0.75rem;
-    padding: 0.4em 1em;
-  }
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.05);
 }
 
-@media screen and (max-width: 480px) {
-  .demo-section {
-    padding: 2rem 0.8rem;
-  }
-
-  .demo-info h3 {
-    font-size: 1rem;
-  }
-
-  .demo-info p {
-    font-size: 0.85rem;
-  }
-
-  .demo-link {
-    font-size: 0.7rem;
-    padding: 0.3em 0.8em;
-  }
-
-  .demo-image-wrapper {
-    height: 150px;
+/* Float-in animation */
+@keyframes floatIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
