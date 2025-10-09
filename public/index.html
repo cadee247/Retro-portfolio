@@ -2,26 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0e0e0e" />
-    <meta
-      name="description"
-      content="Cadee Rousseau — Full-stack developer crafting joyful, pixel-powered web experiences."
-    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Cadee Rousseau" />
+    <meta name="keywords" content="Cadee Rousseau, full-stack developer, MERN, React, pixel art, game portfolio, interactive web design" />
+    <meta name="description" content="Cadee Rousseau — Full-stack developer crafting joyful, pixel-powered web experiences. Explore interactive demos, retro-inspired UI, and creative coding projects." />
+
+    <title>Cadee Rousseau's Gamey Portfolio</title>
+
+    <!-- Favicon & Manifest -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <!-- 🎮 Arcade Font: VT323 -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
 
-    <title>Cadee Rousseau's  Gamey Portfolio</title>
+    <!-- Open Graph for social previews -->
+    <meta property="og:title" content="Cadee Rousseau's Gamey Portfolio" />
+    <meta property="og:description" content="Explore pixel-powered projects, interactive demos, and joyful web design." />
+    <meta property="og:image" content="%PUBLIC_URL%/preview.png" />
+    <meta property="og:url" content="https://cadee247.github.io/Retro-portfolio" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cadee Rousseau's Gamey Portfolio" />
+    <meta name="twitter:description" content="Explore pixel-powered projects, interactive demos, and joyful web design." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/preview.png" />
 
     <style>
-      /* Apply arcade font globally */
       * {
         font-family: 'VT323', monospace;
       }
@@ -33,7 +44,12 @@
     </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <main style="padding: 2rem; text-align: center;">
+        <h1>Cadee Rousseau's Portfolio</h1>
+        <p>This site requires JavaScript to run. Please enable it to explore interactive demos, pixel-powered projects, and joyful web design.</p>
+      </main>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>
