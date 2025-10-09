@@ -1,93 +1,34 @@
 .intro {
-  background-color: #0d0d0d;
-  color: #c89ac9;
+  background-color: transparent;
+  color: #ccc;
   padding: 4rem 2rem;
   text-align: center;
   font-family: 'Press Start 2P', monospace;
-  border: 4px solid #3e1c75;
-  box-shadow: 0 0 40px #7a4ccf, 0 0 80px #ff00ff inset, 0 0 25px #1f1f1f inset;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
-  animation: crt-flicker 5s infinite, intro-glow 2.5s infinite alternate;
 }
 
-/* Animated border glow */
-@keyframes intro-glow {
-  0% { box-shadow: 0 0 40px #7a4ccf, 0 0 80px #ff00ff inset, 0 0 25px #1f1f1f inset; }
-  100% { box-shadow: 0 0 80px #ff00ff, 0 0 120px #7a4ccf inset, 0 0 40px #3e1c75 inset; }
-}
-
-/* CRT Scanlines overlay */
-.intro::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.06) 0px,
-    rgba(255,255,255,0.06) 2px,
-    transparent 2px,
-    transparent 4px
-  );
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  animation: scan-move 8s linear infinite;
-  z-index: 5;
-}
-
-/* Heading glitch */
+/* Heading */
 .intro h1 {
   font-size: 2.6rem;
   margin-bottom: 1.5rem;
-  color: #c89ac9;
-  text-shadow: 3px 3px #000, 0 0 12px #ff00ff, 0 0 24px #7a4ccf;
-  position: relative;
-  z-index: 3;
-  animation: text-glitch-skew 1s infinite linear alternate-reverse;
+  color: #ccc;
+  text-shadow: none;
   letter-spacing: 2px;
 }
 
-.intro h1::before,
-.intro h1::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  background: transparent;
-  overflow: hidden;
-  clip: rect(0, 900px, 0, 0);
-}
-
-.intro h1::before {
-  left: 2px;
-  text-shadow: -3px 0 #7a4ccf, 0 0 8px #ff00ff;
-  animation: glitch-slice-1 2s infinite linear alternate-reverse;
-}
-
-.intro h1::after {
-  left: -2px;
-  text-shadow: -3px 0 #3e1c75, 0 0 8px #ff00ff;
-  animation: glitch-slice-2 3s infinite linear alternate-reverse;
-}
-
-/* Paragraph styling */
+/* Paragraph */
 .intro p {
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  background: #1f1f1f;
+  background: rgba(255, 255, 255, 0.03);
   padding: 1rem;
-  border: 2px solid #7a4ccf;
-  color: #e0b3ff;
-  text-shadow: 1px 1px #000, 0 0 8px #ff00ff;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typeIn 3s steps(40, end), text-glitch-jump 4s infinite;
-  position: relative;
-  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  white-space: normal;
   border-radius: 8px;
-  box-shadow: 0 0 16px #7a4ccf inset, 0 0 8px #ff00ff;
 }
 
 /* Contact links */
@@ -106,34 +47,28 @@
   padding: 0.5em 1.2em;
   font-family: 'Press Start 2P', monospace;
   font-size: 1rem;
-  background: linear-gradient(90deg, #ff00ff 40%, #7a4ccf 100%);
-  color: #ffccff !important;
-  border: 2px solid #7a4ccf;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
   letter-spacing: 1px;
-  text-shadow: 0 0 8px #ff00ff, 0 0 4px #fff;
-  box-shadow: 0 0 12px #7a4ccf, 0 0 6px #ff00ff inset;
-  transition: 0.2s all;
-  position: relative;
-  outline: none;
-  animation: pulseBtn 1.5s infinite alternate;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
 .contact-links a:hover {
-  background: linear-gradient(90deg, #ff00ff 60%, #c89ac9 100%);
-  box-shadow: 0 0 32px #ff00ff, 0 0 16px #fff inset;
+  background: rgba(255, 255, 255, 0.1);
   color: #fff !important;
+  transform: scale(1.05);
 }
 
-/* Whack-a-Mole Game Styling */
+/* Whack-a-Mole Game */
 .whack-game {
   margin: 30px auto;
   max-width: 500px;
   text-align: center;
   position: relative;
-  z-index: 2;
 }
 
 .game-info {
@@ -143,13 +78,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   font-family: 'Press Start 2P', monospace;
-}
-
-.game-info .score,
-.game-info .timer {
-  color: #ffcc00;
-  text-shadow: 0 0 8px #ff0, 0 0 16px #ff00ff;
-  animation: pulseText 1.5s infinite alternate;
+  color: #ccc;
 }
 
 .mole-grid {
@@ -159,37 +88,32 @@
   margin: 20px auto;
   max-width: 400px;
   padding: 20px;
-  background: #1f1f1f;
-  border: 3px solid #7a4ccf;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  box-shadow: 0 0 24px #7a4ccf inset, 0 0 16px #ff00ff;
 }
 
 .mole-hole {
   width: 100%;
   aspect-ratio: 1;
   background: radial-gradient(circle, #654321 0%, #3e2415 100%);
-  border: 3px solid #7a4ccf;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   position: relative;
   cursor: pointer;
   transition: transform 0.1s, box-shadow 0.2s;
-  box-shadow: 0 0 12px #7a4ccf, 0 0 8px #000 inset;
 }
 
 .mole-hole:hover {
-  box-shadow: 0 0 20px #ff00ff, 0 0 12px #000 inset;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
 .mole-hole:active {
   transform: scale(0.95);
-  box-shadow: 0 0 30px #0ff, 0 0 16px #fff inset;
 }
 
 .mole-hole.active {
   background: radial-gradient(circle, #a0522d 0%, #654321 100%);
-  box-shadow: 0 0 24px #ff00ff, 0 0 12px #7a4ccf inset;
-  animation: hole-glow 0.5s infinite alternate;
 }
 
 .mole {
@@ -198,189 +122,51 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: popup 0.3s ease-out, mole-glow 0.5s infinite alternate;
-  filter: drop-shadow(0 0 8px #ff00ff) drop-shadow(0 0 16px #7a4ccf);
 }
 
-@keyframes popup {
-  0% {
-    transform: translate(-50%, 100%);
-    opacity: 0;
-  }
-  50% {
-    transform: translate(-50%, -60%);
-  }
-  100% {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-  }
-}
-
-@keyframes mole-glow {
-  0% { filter: drop-shadow(0 0 8px #ff00ff) drop-shadow(0 0 16px #7a4ccf); }
-  100% { filter: drop-shadow(0 0 16px #0ff) drop-shadow(0 0 24px #fff); }
-}
-
-@keyframes hole-glow {
-  0% { box-shadow: 0 0 24px #ff00ff, 0 0 12px #7a4ccf inset; }
-  100% { box-shadow: 0 0 36px #0ff, 0 0 20px #fff inset; }
-}
-
+/* Start Button */
 .start-btn {
   padding: 12px 30px;
   font-size: 1.1rem;
   font-family: 'Press Start 2P', monospace;
-  background: linear-gradient(90deg, #ff00ff 40%, #7a4ccf 100%);
-  color: #ffccff;
-  border: 3px solid #7a4ccf;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   cursor: pointer;
   margin: 20px 0;
-  transition: 0.2s all;
-  text-shadow: 0 0 8px #ff00ff, 0 0 4px #fff;
-  box-shadow: 0 0 16px #7a4ccf, 0 0 8px #ff00ff inset;
+  transition: background 0.2s, transform 0.2s;
   letter-spacing: 2px;
-  animation: pulseBtn 1.5s infinite alternate;
-  position: relative;
-  z-index: 2;
 }
 
 .start-btn:hover {
-  background: linear-gradient(90deg, #ff00ff 60%, #c89ac9 100%);
-  box-shadow: 0 0 32px #ff00ff, 0 0 16px #fff inset;
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
   transform: scale(1.05);
 }
 
 .start-btn:active {
   transform: scale(0.98);
-  box-shadow: 0 0 40px #0ff, 0 0 20px #fff inset;
 }
 
+/* Game Over */
 .game-over {
   margin: 20px 0;
   padding: 20px;
-  background: #1f1f1f;
-  border: 3px solid #7a4ccf;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  box-shadow: 0 0 24px #7a4ccf inset, 0 0 16px #ff00ff;
-  animation: game-over-pulse 1s infinite alternate;
 }
 
 .game-over h3 {
-  color: #ff00ff;
+  color: #ccc;
   margin-bottom: 10px;
   font-size: 1.8rem;
-  text-shadow: 0 0 12px #ff00ff, 0 0 24px #7a4ccf;
-  animation: text-glitch-skew 1s infinite linear alternate-reverse;
 }
 
 .game-over p {
-  color: #0ff;
+  color: #aaa;
   font-size: 1.4rem;
   margin: 15px 0;
-  text-shadow: 0 0 8px #0ff, 0 0 16px #fff;
   white-space: normal;
-  animation: pulseText 1s infinite alternate;
-}
-
-@keyframes game-over-pulse {
-  0% { box-shadow: 0 0 24px #7a4ccf inset, 0 0 16px #ff00ff; }
-  100% { box-shadow: 0 0 36px #ff00ff inset, 0 0 24px #0ff; }
-}
-
-/* Animations */
-@keyframes pulseBtn {
-  0% { box-shadow: 0 0 12px #7a4ccf, 0 0 6px #ff00ff inset; }
-  100% { box-shadow: 0 0 24px #ff00ff, 0 0 12px #fff inset; }
-}
-
-@keyframes pulseText {
-  0% { text-shadow: 0 0 8px currentColor, 0 0 16px #ff00ff; }
-  100% { text-shadow: 0 0 16px currentColor, 0 0 24px #0ff; }
-}
-
-@keyframes crt-flicker { 0%,100%{opacity:1;}10%{opacity:0.85;}20%{opacity:0.95;}30%{opacity:0.75;}40%{opacity:0.9;}50%{opacity:0.8;}60%{opacity:0.92;}70%{opacity:0.7;}80%{opacity:0.95;}90%{opacity:0.88;} }
-@keyframes scan-move { from{background-position:0 0;} to{background-position:0 100%;} }
-@keyframes text-glitch-skew {0%{transform:skew(0deg);}20%{transform:skew(10deg);}40%{transform:skew(-10deg);}60%{transform:skew(15deg);}80%{transform:skew(-15deg);}100%{transform:skew(0deg);} }
-@keyframes glitch-slice-1 {0%{clip:rect(20px,9999px,40px,0);}20%{clip:rect(60px,9999px,80px,0);}40%{clip:rect(10px,9999px,30px,0);}60%{clip:rect(70px,9999px,100px,0);}80%{clip:rect(40px,9999px,60px,0);}100%{clip:rect(0,9999px,120px,0);} }
-@keyframes glitch-slice-2 {0%{clip:rect(80px,9999px,100px,0);}20%{clip:rect(30px,9999px,60px,0);}40%{clip:rect(50px,9999px,90px,0);}60%{clip:rect(5px,9999px,25px,0);}80%{clip:rect(70px,9999px,110px,0);}100%{clip:rect(20px,9999px,50px,0);} }
-@keyframes typeIn { from{width:0;} to{width:100%;} }
-@keyframes text-glitch-jump {0%{transform:translate(0,0);}10%{transform:translate(-2px,2px);}20%{transform:translate(3px,-1px);}30%{transform:translate(-4px,1px);}40%{transform:translate(1px,-3px);}50%{transform:translate(-3px,3px);}60%{transform:translate(2px,2px);}70%{transform:translate(-1px,-2px);}80%{transform:translate(4px,1px);}90%{transform:translate(-2px,-3px);}100%{transform:translate(0,0);} }
-/* ===== Mobile Responsive Tweaks ===== */
-@media screen and (max-width: 768px) {
-  .intro {
-    padding: 2rem 1rem;
-  }
-
-  .intro h1 {
-    font-size: 1.8rem;
-  }
-
-  .intro p {
-    font-size: 1rem;
-    white-space: normal; /* allow wrapping on smaller screens */
-  }
-
-  .contact-links a {
-    font-size: 0.9rem;
-    padding: 0.4em 1em;
-  }
-
-  .whack-game {
-    max-width: 350px;
-  }
-
-  .mole-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 15px;
-    max-width: 100%;
-  }
-
-  .mole {
-    font-size: 2.2em;
-  }
-
-  .start-btn {
-    font-size: 0.9rem;
-    padding: 10px 25px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .intro {
-    padding: 1.5rem 1rem;
-  }
-
-  .intro h1 {
-    font-size: 1.5rem;
-  }
-
-  .intro p {
-    font-size: 0.9rem;
-  }
-
-  .contact-links {
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-
-  .whack-game {
-    max-width: 280px;
-  }
-
-  .mole-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-
-  .mole {
-    font-size: 1.8em;
-  }
-
-  .start-btn {
-    font-size: 0.85rem;
-    padding: 8px 20px;
-  }
 }
