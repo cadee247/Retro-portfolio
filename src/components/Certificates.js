@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import '../css/certificate.css';
 
-// Local certificate imports
 import NodeCert from '../certificates/Cadee Rousseau  Node.js.pdf';
 import SkillsBuildCert from '../certificates/Completion Certificate _ SkillsBuild.pdf';
 import HtmxCert from '../certificates/htmx cert.pdf';
@@ -12,7 +11,6 @@ import MernCert from '../certificates/Cadee Rousseau  MERN Stack.pdf';
 import ReactCert from '../certificates/Cadee Rousseau  React.pdf';
 import SqlCert from '../certificates/Cadee Rousseau  SQL.pdf';
 
-// Fallback image import
 import FallbackImage from '../assests/certificate.jpg';
 
 Modal.setAppElement('#root');
@@ -67,25 +65,19 @@ const Certificates = () => {
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
-          contentLabel="Certificate Viewer"
-          className="cert-modal"
           overlayClassName="cert-overlay"
+          className="cert-modal"
         >
           <h2>{activeCert.title}</h2>
           <object
             data={activeCert.link}
             type="application/pdf"
-            width="100%"
-            height="600px"
+            className="cert-viewer"
           >
             <p>
-              Your browser can't display this PDF. You can{' '}
-              <a
-                href={activeCert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                download it here
+              Your browser can’t display this PDF.{' '}
+              <a href={activeCert.link} target="_blank" rel="noopener noreferrer">
+                Download it here
               </a>.
             </p>
           </object>
