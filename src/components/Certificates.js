@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 import '../css/certificate.css';
 
 // Local certificate imports
@@ -14,73 +15,70 @@ import SqlCert from '../certificates/Cadee Rousseau  SQL.pdf';
 // Fallback image import
 import FallbackImage from '../assests/certificate.jpg';
 
+Modal.setAppElement('#root'); // Required for accessibility
+
 const certificates = [
-  {
-    title: 'Intro to Programming',
-    provider: 'Code College',
-    link: IntroCert,
-  },
-  {
-    title: 'Python Certificate',
-    provider: 'Code College',
-    link: PythonCert,
-  },
-  {
-    title: 'HTMX Certificate',
-    provider: 'Code College',
-    link: HtmxCert,
-  },
-  {
-    title: 'Node.js Certificate',
-    provider: 'Code College',
-    link: NodeCert,
-  },
-  {
-    title: 'React Certificate',
-    provider: 'Code College',
-    link: ReactCert,
-  },
-  {
-    title: 'MERN Stack Certificate',
-    provider: 'Code College',
-    link: MernCert,
-  },
-  {
-    title: 'SQL Certificate',
-    provider: 'Code College',
-    link: SqlCert,
-  },
-  {
-    title: 'Introduction to Artificial Intelligence',
-    provider: 'IBM SkillsBuild',
-    link: SkillsBuildCert,
-  },
+  { title: 'Intro to Programming', provider: 'Code College', link: IntroCert },
+  { title: 'Python Certificate', provider: 'Code College', link: PythonCert },
+  { title: 'HTMX Certificate', provider: 'Code College', link: HtmxCert },
+  { title: 'Node.js Certificate', provider: 'Code College', link: NodeCert },
+  { title: 'React Certificate', provider: 'Code College', link: ReactCert },
+  { title: 'MERN Stack Certificate', provider: 'Code College', link: MernCert },
+  { title: 'SQL Certificate', provider: 'Code College', link: SqlCert },
+  { title: 'Introduction to Artificial Intelligence', provider: 'IBM SkillsBuild', link: SkillsBuildCert },
 ];
 
-const Certificates = () => (
-  <section id="certificates" className="certificates-section">
-    <h2>Certifications</h2>
-    <div className="cert-grid">
-      {certificates.map((cert, index) => (
-        <div className="cert-card" key={index}>
-          <img
-            src={FallbackImage}
-            alt={cert.title}
+const Certificates = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [activeCert, setActiveCert] = useState(null);
+
+  const openModal = (cert) => {
+    setActiveCert(cert);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setActiveCert(null);
+  };
+
+  return (
+    <section id="certificates" className="certificates-section">
+      <h2>Certifications</h2>
+      <div className="cert-grid">
+        {certificates.map((cert, index) => (
+          <div className="cert-card" key={index}>
+            <img src={FallbackImage} alt={cert.title} />
+            <h3>{cert.title}</h3>
+            <p>{cert.provider}</p>
+            <button className="cert-link" onClick={() => openModal(cert)}>
+              View Certificate
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {activeCert && (
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          contentLabel="Certificate Viewer"
+          className="cert-modal"
+          overlayClassName="cert-overlay"
+        >
+          <h2>{activeCert.title}</h2>
+          <iframe
+            src={activeCert.link}
+            width="100%"
+            height="600px"
+            style={{ border: 'none' }}
+            title={activeCert.title}
           />
-          <h3>{cert.title}</h3>
-          <p>{cert.provider}</p>
-          <a
-            href={cert.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cert-link"
-          >
-            View Certificate
-          </a>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+          <button onClick={closeModal} className="close-button">Close</button>
+        </Modal>
+      )}
+    </section>
+  );
+};
 
 export default Certificates;
