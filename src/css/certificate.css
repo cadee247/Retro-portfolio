@@ -12,12 +12,9 @@
 /* Heading */
 .certificates-section h2 {
   font-size: 1.5rem;
-  color: #ccc;
   margin-bottom: 2rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-shadow: none;
-  animation: none;
 }
 
 /* Grid layout */
@@ -36,9 +33,7 @@
   padding: 1rem;
   border-radius: 12px;
   text-align: center;
-  text-decoration: none;
   color: #ccc;
-  position: relative;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -63,10 +58,8 @@
 /* Title */
 .cert-card h3 {
   font-size: 1rem;
-  color: #ccc;
   margin-bottom: 0.25rem;
   letter-spacing: 1px;
-  text-shadow: none;
 }
 
 /* Description */
@@ -74,7 +67,6 @@
   font-size: 0.85rem;
   color: #aaa;
   font-style: italic;
-  text-shadow: none;
 }
 
 /* Link button */
@@ -99,6 +91,8 @@
   color: #fff;
   transform: scale(1.05);
 }
+
+/* Modal styles */
 .cert-modal {
   background: rgba(0, 0, 0, 0.9);
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -108,19 +102,25 @@
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   text-align: center;
+  max-width: 800px;
+  margin: auto;
 }
 
-.cert-modal iframe {
+.cert-modal iframe,
+.cert-modal object {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   width: 100%;
   height: 600px;
 }
 
+/* Overlay */
 .cert-overlay {
   background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
 }
 
+/* Close button */
 .close-button {
   font-family: 'Press Start 2P', monospace;
   font-size: 0.8rem;
