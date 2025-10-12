@@ -1,0 +1,117 @@
+.about-section {
+  padding: 3rem 2rem;
+  background: transparent;
+  color: #ccc;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-family: 'Press Start 2P', monospace;
+  position: relative;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 2rem auto;
+  border-radius: 12px;
+}
+
+/* Heading */
+.about-section h2 {
+  font-size: 1.6rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: none;
+  animation: none;
+}
+
+/* Paragraphs */
+.about-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+  text-shadow: none;
+  animation: none;
+  border-radius: 8px;
+}
+
+/* Info List */
+.about-section ul.additional-info {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.about-section ul.additional-info li {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  font-size: 0.95rem;
+  font-family: 'Press Start 2P', monospace;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.about-section ul.additional-info li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Tic-Tac-Toe */
+.tic-tac-toe {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  gap: 5px;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.cell {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.winner {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.winner button {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  font-family: 'Press Start 2P', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.winner button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}

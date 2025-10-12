@@ -1,0 +1,248 @@
+.skills-section {
+  padding: 3rem 2rem;
+  background: transparent;
+  color: #ccc;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Heading */
+.skills-heading {
+  font-size: 2rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-shadow: none;
+}
+
+/* Skills grid */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Skill card */
+.skill-card {
+  width: 100px;
+  height: 110px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: floatIn 0.7s ease forwards;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skill-card:hover,
+.skill-card:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Skill icon */
+.skill-card img {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 0.5rem;
+}
+
+/* Skill label */
+.skill-label {
+  font-size: 0.8rem;
+  color: #ccc;
+  letter-spacing: 1px;
+}
+
+/* Float-in animation */
+@keyframes floatIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Memory game section */
+.memory-game-section {
+  margin: 2rem 0;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  color: #ccc;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 10px;
+  max-width: 400px;
+  margin: 1rem auto;
+}
+
+.memory-card {
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+.memory-card-inner {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.memory-card.flipped .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card-front,
+.memory-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.memory-card-front {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.memory-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.memory-card-back img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.memory-card.matched .memory-card-back img {
+  transform: scale(1.2);
+}
+
+/* Restart button */
+.restart-button {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  padding: 0.5em 1em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.restart-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Win text */
+.win-text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 480px) {
+  .skills-section {
+    padding: 2rem 1rem;
+  }
+
+  .skills-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .skills-grid {
+    gap: 1rem;
+  }
+
+  .skill-card {
+    width: 80px;
+    height: 90px;
+    padding: 0.4rem;
+  }
+
+  .skill-card img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .skill-label {
+    font-size: 0.7rem;
+  }
+
+  .memory-grid {
+    gap: 6px;
+    max-width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  }
+
+  .memory-card-back img,
+  .memory-card-front {
+    border-radius: 6px;
+  }
+
+  .restart-button {
+    font-size: 0.6rem;
+    padding: 0.4em 0.8em;
+  }
+
+  .win-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skills-heading {
+    font-size: 1.7rem;
+  }
+
+  .skill-card {
+    width: 90px;
+    height: 100px;
+  }
+
+  .skill-card img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .skill-label {
+    font-size: 0.75rem;
+  }
+
+  .memory-grid {
+    gap: 8px;
+  }
+}

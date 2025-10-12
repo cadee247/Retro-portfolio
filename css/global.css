@@ -1,0 +1,86 @@
+/* Global */
+body {
+  background-image: url('../assests/portfolio background.jpg'); /* your image path */
+  background-repeat: repeat;       /* repeat the image horizontally and vertically */
+  background-position: top left;   /* start tiling from top-left */
+  background-size: auto;           /* keep original size so it tiles */
+  background-attachment: fixed;    /* optional: keeps background fixed on scroll */
+  color: #7a4ccf;                  /* text color */
+}
+
+h1, h2, h3 {
+  color: #9e7bdc;
+}
+
+p {
+  border: 2px dotted #7a4ccf;
+}
+
+section {
+  border-bottom: 4px solid #3e1c75;
+}
+
+/* Links & Buttons */
+a, button {
+  background-color: #3e1c75;
+  border: 2px solid #7a4ccf;
+}
+
+a:hover, button:hover {
+  box-shadow: 0 0 10px #7a4ccf;
+}
+
+/* Project Section */
+.project-section {
+  border-top: 4px solid #3e1c75;
+  color: #c89ac9;
+}
+
+.project-section p {
+  border: 2px dashed #7a4ccf;
+}
+
+/* About Section */
+.about-section {
+  border-bottom: 4px solid #3e1c75;
+  color: #9e7bdc;
+}
+
+.about-section p {
+  border-left: 4px solid #7a4ccf;
+}
+/* ===== Mobile adjustments for global/base styles ===== */
+@media screen and (max-width: 768px) {
+  p {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  a, button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1, h2, h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  section {
+    padding: 0.8rem;
+  }
+
+  a, button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}

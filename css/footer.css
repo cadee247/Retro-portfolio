@@ -1,0 +1,212 @@
+.pixel-footer {
+  position: relative;
+  min-height: 300px;
+  overflow: hidden;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  color: #ccc;
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+  z-index: 1;
+  text-shadow: none;
+}
+
+/* Fireworks container */
+.pixel-footer .firework-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  filter: brightness(1.1);
+}
+
+/* Rocket */
+.pixel-footer .rocket {
+  position: absolute;
+  width: 4px;
+  height: 16px;
+  background: linear-gradient(to bottom, var(--color), transparent);
+  animation: flyUp 1s ease-out forwards;
+}
+
+.pixel-footer .rocket::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #ffaa00, #ff6600);
+  border-radius: 50%;
+  animation: rocketFlicker 0.1s infinite;
+}
+
+/* Explosion */
+.pixel-footer .explosion-flash {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, var(--color), transparent);
+  border-radius: 50%;
+  opacity: 1;
+  animation: flash 0.4s ease-out forwards;
+}
+
+.pixel-footer .particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--color);
+  border-radius: 50%;
+  animation: explode var(--duration) ease-out forwards;
+}
+
+.pixel-footer .ring {
+  position: absolute;
+  border: 2px solid var(--color);
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: ringExpand 1.2s ease-out forwards;
+  opacity: 0.9;
+}
+
+/* Footer content */
+.pixel-footer .footer-end-screen {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  max-width: 90%;
+}
+
+.pixel-footer .footer-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #ccc;
+  text-shadow: none;
+  letter-spacing: 2px;
+}
+
+.pixel-footer .footer-subtext {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #aaa;
+  text-shadow: none;
+}
+
+.pixel-footer .footer-score {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  color: #aaa;
+  text-shadow: none;
+}
+
+.pixel-footer .footer-restart {
+  font-size: 0.9rem;
+  margin-top: 15px;
+  color: #ccc;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.pixel-footer .footer-restart:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes flyUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(var(--launch-distance)) scale(0.8); opacity: 0.9; }
+}
+
+@keyframes rocketFlicker {
+  0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.7; transform: translateX(-50%) scale(1.2); }
+}
+
+@keyframes flash {
+  0% { opacity: 1; transform: scale(0.5); }
+  50% { opacity: 0.9; transform: scale(2); }
+  100% { opacity: 0; transform: scale(4); }
+}
+
+@keyframes explode {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+  50% { opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(720deg); opacity: 0; }
+}
+
+@keyframes ringExpand {
+  0% { transform: scale(0) rotate(0deg); opacity: 0.9; }
+  100% { transform: scale(8) rotate(360deg); opacity: 0; }
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+  .pixel-footer {
+    min-height: 250px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .pixel-footer .footer-end-screen {
+    padding: 20px;
+  }
+
+  .pixel-footer .footer-title {
+    font-size: 1.5rem;
+  }
+
+  .pixel-footer .footer-subtext,
+  .pixel-footer .footer-score {
+    font-size: 0.9rem;
+  }
+
+  .pixel-footer .footer-restart {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .pixel-footer {
+    min-height: 200px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .pixel-footer .footer-end-screen {
+    padding: 15px;
+  }
+
+  .pixel-footer .footer-title {
+    font-size: 1.2rem;
+  }
+
+  .pixel-footer .footer-subtext,
+  .pixel-footer .footer-score {
+    font-size: 0.8rem;
+  }
+
+  .pixel-footer .footer-restart {
+    font-size: 0.7rem;
+  }
+
+  .pixel-footer .firework-container {
+    filter: brightness(1);
+  }
+}

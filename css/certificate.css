@@ -1,0 +1,141 @@
+.certificates-section {
+  padding: 3rem 2rem;
+  background: transparent;
+  color: #ccc;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-family: 'Press Start 2P', monospace;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Heading */
+.certificates-section h2 {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: none;
+  animation: none;
+}
+
+/* Grid layout */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Certificate card */
+.cert-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #ccc;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cert-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Certificate image */
+.cert-card img {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.cert-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Title */
+.cert-card h3 {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 0.25rem;
+  letter-spacing: 1px;
+  text-shadow: none;
+}
+
+/* Description */
+.cert-card p {
+  font-size: 0.85rem;
+  color: #aaa;
+  font-style: italic;
+  text-shadow: none;
+}
+
+/* Link button */
+.cert-link {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  padding: 0.5em 1.2em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  margin-top: 0.5rem;
+}
+
+.cert-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.05);
+}
+.cert-modal {
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  font-family: 'Press Start 2P', monospace;
+  color: #ccc;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.cert-modal iframe {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  width: 100%;
+  height: 600px;
+}
+
+.cert-overlay {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.close-button {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  padding: 0.5em 1.2em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.05);
+}

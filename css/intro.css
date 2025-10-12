@@ -1,0 +1,172 @@
+.intro {
+  background-color: transparent;
+  color: #ccc;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Heading */
+.intro h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+  color: #ccc;
+  text-shadow: none;
+  letter-spacing: 2px;
+}
+
+/* Paragraph */
+.intro p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  white-space: normal;
+  border-radius: 8px;
+}
+
+/* Contact links */
+.contact-links {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5em 1.2em;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.contact-links a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff !important;
+  transform: scale(1.05);
+}
+
+/* Whack-a-Mole Game */
+.whack-game {
+  margin: 30px auto;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Press Start 2P', monospace;
+  color: #ccc;
+}
+
+.mole-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 20px auto;
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.mole-hole {
+  width: 100%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, #654321 0%, #3e2415 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+
+.mole-hole:hover {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.mole-hole:active {
+  transform: scale(0.95);
+}
+
+.mole-hole.active {
+  background: radial-gradient(circle, #a0522d 0%, #654321 100%);
+}
+
+.mole {
+  font-size: 3em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Start Button */
+.start-btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-family: 'Press Start 2P', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 2px;
+}
+
+.start-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.start-btn:active {
+  transform: scale(0.98);
+}
+
+/* Game Over */
+.game-over {
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.game-over h3 {
+  color: #ccc;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.game-over p {
+  color: #aaa;
+  font-size: 1.4rem;
+  margin: 15px 0;
+  white-space: normal;
+}

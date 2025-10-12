@@ -1,0 +1,162 @@
+.project-section {
+  padding: 3rem 1.5rem;
+  background: transparent;
+  color: #ccc;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Heading */
+.project-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+  letter-spacing: 2px;
+  text-shadow: none;
+}
+
+/* Grid layout */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+/* Project card */
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover,
+.project-card:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Card content */
+.project-card h4 {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: none;
+}
+
+.project-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #aaa;
+  margin-bottom: 0.8rem;
+  text-shadow: none;
+}
+
+/* Project links */
+.project-links {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.project-link,
+.github-link {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+  padding: 0.4em 1em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.project-link:hover,
+.github-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* GitHub link variant */
+.github-link {
+  background: rgba(36, 41, 46, 0.6);
+  color: #fff;
+}
+
+/* Project image */
+.project-image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.85);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 480px) {
+  .project-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .project-card {
+    padding: 0.8rem;
+  }
+
+  .project-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .project-card p {
+    font-size: 0.75rem;
+  }
+
+  .project-links {
+    gap: 0.5rem;
+  }
+
+  .project-link,
+  .github-link {
+    font-size: 0.65rem;
+    padding: 0.3em 0.7em;
+  }
+
+  .project-image-wrapper {
+    height: 120px;
+  }
+
+  .project-card:hover,
+  .project-card:focus {
+    transform: scale(1.03);
+  }
+}
