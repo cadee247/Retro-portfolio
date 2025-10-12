@@ -15,7 +15,7 @@ import SqlCert from '../certificates/Cadee Rousseau  SQL.pdf';
 // Fallback image import
 import FallbackImage from '../assests/certificate.jpg';
 
-Modal.setAppElement('#root'); // Required for accessibility
+Modal.setAppElement('#root');
 
 const certificates = [
   { title: 'Intro to Programming', provider: 'Code College', link: IntroCert },
@@ -43,17 +43,15 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" className="certificates-section">
+    <section id="certificates">
       <h2>Certifications</h2>
-      <div className="cert-grid">
+      <div>
         {certificates.map((cert, index) => (
-          <div className="cert-card" key={index}>
+          <div key={index}>
             <img src={FallbackImage} alt={cert.title} />
             <h3>{cert.title}</h3>
             <p>{cert.provider}</p>
-            <button className="cert-link" onClick={() => openModal(cert)}>
-              View Certificate
-            </button>
+            <button onClick={() => openModal(cert)}>View Certificate</button>
           </div>
         ))}
       </div>
@@ -63,18 +61,22 @@ const Certificates = () => {
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           contentLabel="Certificate Viewer"
-          className="cert-modal"
-          overlayClassName="cert-overlay"
         >
           <h2>{activeCert.title}</h2>
-          <iframe
-            src={activeCert.link}
+          <object
+            data={activeCert.link}
+            type="application/pdf"
             width="100%"
             height="600px"
-            style={{ border: 'none' }}
-            title={activeCert.title}
-          />
-          <button onClick={closeModal} className="close-button">Close</button>
+          >
+            <p>
+              Your browser can't display this PDF. You can{' '}
+              <a href={activeCert.link} target="_blank" rel="noopener noreferrer">
+                download it here
+              </a>.
+            </p>
+          </object>
+          <button onClick={closeModal}>Close</button>
         </Modal>
       )}
     </section>
