@@ -43,15 +43,22 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates">
+    <section className="certificates-section" id="certificates">
       <h2>Certifications</h2>
-      <div>
+
+      <div className="cert-grid">
         {certificates.map((cert, index) => (
-          <div key={index}>
-            <img src={FallbackImage} alt={cert.title} />
-            <h3>{cert.title}</h3>
-            <p>{cert.provider}</p>
-            <button onClick={() => openModal(cert)}>View Certificate</button>
+          <div className="cert-card" key={index}>
+            <div className="cert-image-wrapper">
+              <img src={FallbackImage} alt={cert.title} />
+            </div>
+            <div className="cert-info">
+              <h3>{cert.title}</h3>
+              <p>{cert.provider}</p>
+              <button className="cert-link" onClick={() => openModal(cert)}>
+                View Certificate
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -61,6 +68,8 @@ const Certificates = () => {
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           contentLabel="Certificate Viewer"
+          className="cert-modal"
+          overlayClassName="cert-overlay"
         >
           <h2>{activeCert.title}</h2>
           <object
@@ -71,12 +80,18 @@ const Certificates = () => {
           >
             <p>
               Your browser can't display this PDF. You can{' '}
-              <a href={activeCert.link} target="_blank" rel="noopener noreferrer">
+              <a
+                href={activeCert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 download it here
               </a>.
             </p>
           </object>
-          <button onClick={closeModal}>Close</button>
+          <button className="close-button" onClick={closeModal}>
+            Close
+          </button>
         </Modal>
       )}
     </section>
